@@ -25,11 +25,12 @@
     		background: light
     	}
     	#chatInput{
-    		width:90%;
-    		height: 100%;
+    		width:80%;
+    		height: 90%;
     	}
     	#chatSend{
     		width:10%;
+    		margin-left:5%;
     		height: 100%;
     	}
 
@@ -49,6 +50,31 @@
 
 
 	<script>
+		$.ready(function(){
+			var chatId = document.location.hash.substr(1)
+			if (chatId ==''){
+				chatId='Homepage'
+			}
+			function renderChatMessages(messages){
+
+			}
+
+			function getStartupMessages(){
+				$.get('http://betbot.samrudloff.com:5000/chat/'+chatId, function(data){
+					console.log(data)
+					renderChatMessages(data['m'])
+				});
+			}
+			function sendMessage(user,message){
+				$.post('http://betbot.samrudloff.com:5000/chat/'+chatId,{'user':})
+			}
+			function getNewMessages(lu){
+				$.get('http://betbot.samrudloff.com:5000/chat/'+chatId,function(data){
+					renderChatMessages(data['m'])
+				});
+			}
+			getStartupMessages()
+		})
 	</script>
 </body>
 </html>
