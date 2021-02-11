@@ -72,12 +72,10 @@
 			}
 		}
 		function render(data){
-			alert(convertTimestamptoTime(data['lu']))
+			console.log(convertTimestamptoTime(data['lu']))
 			renderChatMessages(data['m'])
 		}
-		$('#username').change(function(){
-			localStorage.setItem('username', $('#username').val());
-		})
+		
 		function getStartupMessages(){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId, function(data){
 				console.log(data)
@@ -103,13 +101,18 @@
 			e.preventDefault();
 
 		}
-		$('#chatSend').click(sendMessage)
 		function getNewMessages(lu){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId,function(data){
 				render(data)
 			});
 		}
-		$(document).ready(getStartupMessages);
+		$(document).ready(function(){
+			$('#username').change(function(){
+				localStorage.setItem('username', $('#username').val());
+			})
+			$('#chatSend').click(sendMessage);
+			getStartupMessages();
+		});
 	</script>
 </body>
 </html>
