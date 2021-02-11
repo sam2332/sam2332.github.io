@@ -57,7 +57,7 @@
 			chatId='Homepage'
 		}
 		window.lu = 0
-		$('#username').val(localStorage['username'] )
+		$('#username').val(localStorage.getItem('username') )
 		function convertTimestamptoTime(unixTimestamp) { 
   
             dateObj = new Date(unixTimestamp * 1000); 
@@ -76,7 +76,7 @@
 			renderChatMessages(data['m'])
 		}
 		$('#username').change(function(){
-			localStorage['username'] = $('#username').val()
+			localStorage.setItem('username', $('#username').val());
 		})
 		function getStartupMessages(){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId, function(data){
