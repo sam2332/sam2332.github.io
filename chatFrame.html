@@ -56,11 +56,8 @@
 		}
 		window.lu = 0
 
-		function convertTimestamptoTime() { 
-            unixTimestamp = 10637282; 
+		function convertTimestamptoTime(unixTimestamp) { 
   
-            // convert to milliseconds and  
-            // then create a new Date object 
             dateObj = new Date(unixTimestamp * 1000); 
             utcString = dateObj.toUTCString(); 
   
