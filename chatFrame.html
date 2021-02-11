@@ -54,14 +54,34 @@
 		if (chatId ==''){
 			chatId='Homepage'
 		}
-		function renderChatMessages(messages){
+		window.lu = 0
 
+		function convertTimestamptoTime() { 
+            unixTimestamp = 10637282; 
+  
+            // convert to milliseconds and  
+            // then create a new Date object 
+            dateObj = new Date(unixTimestamp * 1000); 
+            utcString = dateObj.toUTCString(); 
+  
+            time = utcString.slice(-11, -4); 
+            return time
+        }
+		function renderChatMessages(messages){
+			for (var i = messages.length - 1; i >= 0; i--) {
+				messages[i]
+			}
+		}
+		function render(data){
+			alert(convertTimestamptoTime(data['lu']))
+			renderChatMessages(data['m'])
 		}
 
 		function getStartupMessages(){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId, function(data){
 				console.log(data)
-				renderChatMessages(data['m'])
+				render(data)
+				window.lu = data['lu']
 			});
 		}
 		function sendMessage(user,message){
@@ -69,7 +89,7 @@
 		}
 		function getNewMessages(lu){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId,function(data){
-				renderChatMessages(data['m'])
+				render(data)
 			});
 		}
 		$(document).ready(getStartupMessages);
