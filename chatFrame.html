@@ -59,16 +59,16 @@
 		}
 
 		function getStartupMessages(){
-			$.get('http://betbot.samrudloff.com:5000/chat/'+chatId, function(data){
+			$.get('https://betbot.samrudloff.com:5000/chat/'+chatId, function(data){
 				console.log(data)
 				renderChatMessages(data['m'])
 			});
 		}
 		function sendMessage(user,message){
-			$.post('http://betbot.samrudloff.com:5000/chat/'+chatId,{'user':'Testing User','message':"Testing Message"})
+			$.post('https://betbot.samrudloff.com:5000/chat/'+chatId,{'user':'Testing User','message':"Testing Message"})
 		}
 		function getNewMessages(lu){
-			$.get('http://betbot.samrudloff.com:5000/chat/'+chatId,function(data){
+			$.get('https://betbot.samrudloff.com:5000/chat/'+chatId,function(data){
 				renderChatMessages(data['m'])
 			});
 		}
