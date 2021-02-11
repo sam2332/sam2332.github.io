@@ -57,7 +57,7 @@
 			chatId='Homepage'
 		}
 		window.lu = 0
-
+		$('#username').val(localStorage['username'] )
 		function convertTimestamptoTime(unixTimestamp) { 
   
             dateObj = new Date(unixTimestamp * 1000); 
@@ -75,7 +75,9 @@
 			alert(convertTimestamptoTime(data['lu']))
 			renderChatMessages(data['m'])
 		}
-
+		$('#username').change(function(){
+			localStorage['username'] = $('#username').val()
+		})
 		function getStartupMessages(){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId, function(data){
 				console.log(data)
@@ -97,6 +99,7 @@
 					alert( data );
 				}
 			});
+			$('#chatInput').val('')
 			e.preventDefault();
 
 		}
