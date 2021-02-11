@@ -60,10 +60,10 @@
 		$('#username').val(localStorage.getItem('username') )
 		function convertTimestamptoTime(unixTimestamp) { 
   
-            dateObj = new Date(unixTimestamp * 1000); 
+            dateObj = new Date(unixTimestamp); 
             utcString = dateObj.toUTCString(); 
   
-            time = utcString.slice(-11, -4); 
+            time = utcString
             return time
         }
 		function renderChatMessages(messages){
