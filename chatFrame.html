@@ -40,6 +40,8 @@
 	<div id='chatFrame'>
 		<div id='chatMessages'></div>
 		<div id='chatInputFrame'>
+			<lable>Username:<input type='text' id='username'/></lable>
+			<br />
 			<input type='text' id='chatInput'/>
 			<a href='#' id='chatSend' class='btn btn-primary'>Send</a>
 		</div>
@@ -82,8 +84,12 @@
 			});
 		}
 		function sendMessage(user,message){
-			$.post('https://betbot.samrudloff.com/chat/'+chatId,{'user':'Testing User','message':"Testing Message"})
+			$.post('https://betbot.samrudloff.com/chat/'+chatId,{
+				'user':$('#username').val(),
+				'message':$('#chatInput').val()
+			})
 		}
+		$('#chatSend').click(sendMessage)
 		function getNewMessages(lu){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId,function(data){
 				render(data)
