@@ -83,11 +83,22 @@
 				window.lu = data['lu']
 			});
 		}
-		function sendMessage(user,message){
-			$.post('https://betbot.samrudloff.com/chat/'+chatId,{
-				'user':$('#username').val(),
-				'message':$('#chatInput').val()
-			})
+		function sendMessage(e){
+			data = new FormData();
+    		data.append( 'user', $('#username').val() );
+    		data.append( 'message', $('#chatInput').val() );
+
+			$.ajax({
+				url: 'https://betbot.samrudloff.com/chat/'+chatId,
+				data: data,
+				processData: false,
+				type: 'POST',
+				success: function ( data ) {
+					alert( data );
+				}
+			});
+			e.preventDefault();
+
 		}
 		$('#chatSend').click(sendMessage)
 		function getNewMessages(lu){
