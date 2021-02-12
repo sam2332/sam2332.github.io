@@ -503,6 +503,31 @@
 				}
 			});
 		}
+		function pollForNewMessages(){
+			$.ajax({
+				url: 'https://betbot.samrudloff.com/chat/'+window.chatId,
+				type: 'GET',
+				contentType: 'application/json',
+				crossDomain: true,
+				success: function ( data ) {
+					console.log(data);
+					if (window.lu != data['lu']){
+
+					render(data);
+					window.lu = data['lu'];
+					}
+				},
+				error: function(xhr, ajaxOptions, thrownError){
+					$('#chatMessages').empty();
+					const some_html = `
+					  <div class="message">
+					    <h2>Error Fetching messages!</h2>
+					  </div>
+					`;
+					$('#chatMessages').append(some_html);
+				}
+			});
+		}
 		function sendMessage(e){
 			data = {}
     		data['user']=$('#username').val();
@@ -547,6 +572,9 @@
 			    }
 			});
 			getMessages();
+			setInterval(function(){
+				pollForNewMessages()
+			},5000)
 		});
 	</script>
 </body>
