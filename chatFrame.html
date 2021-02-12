@@ -477,7 +477,8 @@
 			$('#messageCount').text(data['m'].length +' Messages');
 			console.log(convertTimestamptoTime(data['lu']));
 			renderChatMessages(data['m']);
-			$('#chatMessages').scrollTop($('#chatMessages')[0].scrollHeight);
+			var d = $('#chatMessages');
+			d.scrollTop(d.prop('scrollHeight'))
 
 		}
 		
