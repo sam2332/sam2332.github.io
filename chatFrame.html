@@ -437,7 +437,7 @@
 				message = parseMarkdown(msg['m']);
 				user = msg['u']
 				if (previous_user != user){
-					nuindex +=1
+					nuindex +=1;
 					ua = msg['u'].substr(0,2);
 					time = new Date(msg['t']*1000);
 					if (nuindex %2 == 1){
