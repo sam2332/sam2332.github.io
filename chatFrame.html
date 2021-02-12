@@ -118,7 +118,7 @@
 					render(data)
 					window.lu = data['lu']
 				},
-				error:function(xhr, ajaxOptions, thrownError){
+				error: function(xhr, ajaxOptions, thrownError){
 					$('#chatMessages').empty()
 					const some_html = `
 					  <div class="message">
@@ -144,7 +144,7 @@
 				success: function ( data ) {
 					getMessages()
 				},
-				error:function(xhr, ajaxOptions, thrownError){
+				error: function(xhr, ajaxOptions, thrownError){
 					$('#chatMessages').empty()
 					const some_html = `
 					  <div class="message">
