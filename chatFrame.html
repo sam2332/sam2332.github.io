@@ -52,12 +52,12 @@
 
 
 	<script>
-		var chatId = document.location.hash.substr(1)
-		if (chatId ==''){
-			chatId='Homepage'
+		window.chatId = document.location.hash.substr(1)
+		if (window.chatId ==''){
+			window.chatId='Homepage'
 		}
 		window.lu = 0
-		$('#username').val(localStorage.getItem('username') )
+		$('#username').val(localStorage.getItem('username'))
 
 		function parseMarkdown(markdownText) {
 			const htmlText = markdownText
@@ -109,7 +109,7 @@
 		
 		function getMessages(){
 			$.ajax({
-				url: 'https://betbot.samrudloff.com/chat/'+chatId,
+				url: 'https://betbot.samrudloff.com/chat/'+window.chatId,
 				type: 'GET',
 				success: function ( data ) {
 					console.log(data)
@@ -133,7 +133,7 @@
     		data.append( 'message', $('#chatInput').val() );
 
 			$.ajax({
-				url: 'https://betbot.samrudloff.com/chat/'+chatId,
+				url: 'https://betbot.samrudloff.com/chat/'+window.chatId,
 				data: data,
 				processData: true,
   				contentType: "application/json; charset=utf-8",
