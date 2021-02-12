@@ -135,7 +135,7 @@
 
 			$.ajax({
 				url: 'https://betbot.samrudloff.com/chat/'+window.chatId,
-				data: data,
+				data: json.stringify(data),
 				processData: false,
 				crossDomain: true,
   				contentType: "application/json; charset=utf-8",
