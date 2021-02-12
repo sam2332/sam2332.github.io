@@ -89,7 +89,7 @@
 
 				message = parseMarkdown(msg['m'])
 				user = msg['u']
-				time = new Date(msg['t']);
+				time = new Date(msg['t']*1000);
 				const some_html = `
 				  <div class="message">
 				    <h2>${user}</h2>
