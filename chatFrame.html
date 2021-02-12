@@ -117,6 +117,7 @@
 					window.lu = data['lu']
 				},
 				error:function(xhr, ajaxOptions, thrownError){
+					$('#chatMessages').empty()
 					const some_html = `
 					  <div class="message">
 					    <h2>No Messages Added yet, Be the first!</h2>
@@ -140,9 +141,10 @@
 					getMessages()
 				},
 				error:function(xhr, ajaxOptions, thrownError){
+					$('#chatMessages').empty()
 					const some_html = `
 					  <div class="message">
-					    <h2>No Messages Added yet, Be the first!</h2>
+					    <h2>Error Sending message</h2>
 					  </div>
 					`;
 					$('#chatMessages').append(some_html);
