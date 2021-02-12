@@ -110,7 +110,7 @@
 		function getMessages(){
 			$.ajax({
 				url: 'https://betbot.samrudloff.com/chat/'+chatId,
-				type: 'get',
+				type: 'GET',
 				success: function ( data ) {
 					console.log(data)
 					render(data)
