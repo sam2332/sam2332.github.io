@@ -84,7 +84,7 @@
             return time
         }
 		function renderChatMessages(messages){
-			for (var i = 0; i >= messages.length - 1; i--) {
+			for (var i = 0; i <= messages.length - 1; i--) {
 				msg = messages[i]
 
 				message = parseMarkdown(msg['m'])
