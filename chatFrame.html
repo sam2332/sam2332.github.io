@@ -430,6 +430,7 @@
 			var nuindex = 0;
 			var p1 = 'left';
 			var p3 = '';
+			var some_html;
 			for (var i = 0; i <= messages.length - 1; i++) {
 				msg = messages[i];
 				
@@ -445,14 +446,14 @@
 						p1 = 'right';
 						p3='right';
 					}
-					const some_html = `
+					some_html = `
 	                    <div class="direct-chat-msg ${p3}">
 	                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name float-${p1}">${user}</span> <span class="direct-chat-timestamp float-${p1}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
 	                        <div class="direct-chat-text">${message}</div>
 	                    </div>`;
 	                previous_user = user;
                 }else{
-					const some_html = `
+					some_html = `
 	                    <div class="direct-chat-msg ${p3}">
 	                    <div class="direct-chat-info clearfix"><span class="direct-chat-timestamp float-${p1}">${time}</span></div>
 	                        <div class="direct-chat-text">${message}</div>
