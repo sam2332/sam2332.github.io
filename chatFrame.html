@@ -84,6 +84,7 @@
             return time
         }
 		function renderChatMessages(messages){
+			$('#chatMessages').empty()
 			for (var i = messages.length - 1; i >= 0; i--) {
 				msg = messages[i]
 
@@ -106,7 +107,7 @@
 			renderChatMessages(data['m'])
 		}
 		
-		function getStartupMessages(){
+		function getMessages(){
 			$.get('https://betbot.samrudloff.com/chat/'+chatId, function(data){
 				console.log(data)
 				render(data)
@@ -124,7 +125,7 @@
 				processData: false,
 				type: 'POST',
 				success: function ( data ) {
-					alert( data );
+					getMessages()
 				}
 			});
 			$('#chatInput').val('')
@@ -141,7 +142,7 @@
 				localStorage.setItem('username', $('#username').val());
 			})
 			$('#chatSend').click(sendMessage);
-			getStartupMessages();
+			getMessages();
 		});
 	</script>
 </body>
