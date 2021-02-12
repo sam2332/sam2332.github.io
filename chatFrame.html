@@ -410,7 +410,13 @@
 		$('#username').val(localStorage.getItem('username'))
 
 		
-
+		const renderer = new marked.Renderer();
+		const linkRenderer = renderer.link;
+		renderer.link = (href, title, text) => {
+		    const html = linkRenderer.call(renderer, href, title, text);
+		    return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ');
+		};
+		
 
 		function convertTimestamptoTime(unixTimestamp) { 
   
@@ -429,7 +435,7 @@
 			for (var i = 0; i <= messages.length - 1; i++) {
 				msg = messages[i];
 				
-				message = marked(msg['m']);
+				message = marked(msg['m'], { renderer });
 				user = msg['u']
 				if (previous_user != user){
 					nuindex +=1;
