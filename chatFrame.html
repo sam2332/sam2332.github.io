@@ -540,6 +540,12 @@
 			localStorage.setItem('username', $('#username').val());
 			})
 			$('#chatSend').click(sendMessage);
+			$('#chatInput').on('keypress',function(e) {
+			    if(e.which == 13) {
+			    	sendMessage()
+			    }
+			    e.preventDefault();
+			});
 			getMessages();
 		});
 	</script>
