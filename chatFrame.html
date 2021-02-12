@@ -543,9 +543,9 @@
 			$('#chatInput').on('keypress',function(e) {
 			    if(e.which == 13) {
 			    	sendMessage()
+				    e.preventDefault();
+				    $('#chatInput').focus()
 			    }
-			    e.preventDefault();
-			    $('#chatInput').focus()
 			});
 			getMessages();
 		});
