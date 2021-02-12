@@ -111,9 +111,7 @@
 			$.ajax({
 				url: 'https://betbot.samrudloff.com/chat/'+window.chatId,
 				type: 'GET',
-				headers: {
-  					contentType: "application/json; charset=utf-8",
-  				},
+				contentType: 'application/json',
 				crossDomain: true,
 				success: function ( data ) {
 					console.log(data)
@@ -141,9 +139,7 @@
 				data: JSON.stringify(data),
 				processData: false,
 				crossDomain: true,
-				headers: {
-  					contentType: "application/json; charset=utf-8",
-  				},
+				contentType: 'application/json',
 				type: 'POST',
 				success: function ( data ) {
 					getMessages()
