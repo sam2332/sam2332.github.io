@@ -84,7 +84,6 @@
             return time
         }
 		function renderChatMessages(messages){
-			$('#chatMessages').empty()
 			for (var i = messages.length - 1; i >= 0; i--) {
 				msg = messages[i]
 
@@ -103,6 +102,7 @@
 			}
 		}
 		function render(data){
+			$('#chatMessages').empty()
 			console.log(convertTimestamptoTime(data['lu']))
 			renderChatMessages(data['m'])
 		}
@@ -126,6 +126,15 @@
 				type: 'POST',
 				success: function ( data ) {
 					getMessages()
+				},
+				error:function(xhr, ajaxOptions, thrownError){
+
+					const some_html = `
+					  <div class="message">
+					    <h2>No Messages Added yet, Be the first!</h2>
+					  </div>
+					`;
+					$('#chatMessages').append(some_html);
 				}
 			});
 			$('#chatInput').val('')
