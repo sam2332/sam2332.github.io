@@ -430,12 +430,9 @@
 				msg = messages[i]
 				if (i %2 == 1){
 					p1 = 'left'
-					p2 = 'right'
 					p3 =''
 				}else{
-
 					p1 = 'right'
-					p2 = 'left'
 					p3='right'
 				}
 				message = parseMarkdown(msg['m'])
@@ -444,7 +441,7 @@
 				time = new Date(msg['t']*1000);
 				const some_html = `
                     <div class="direct-chat-msg ${p3}">
-                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name float-${p1}">${user}</span> <span class="direct-chat-timestamp float-${p2}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
+                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name float-${p1}">${user}</span> <span class="direct-chat-timestamp float-${p1}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
                         <div class="direct-chat-text">${message}</div>
                     </div>`
 				$('#chatMessages').append(some_html);
