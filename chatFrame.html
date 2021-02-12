@@ -427,7 +427,8 @@
 				time = new Date(msg['t']*1000);
 				const some_html = `
                     <div class="direct-chat-msg right">
-                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">${user}</span> <span class="direct-chat-timestamp pull-left">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
+						<img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
+                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">${user}</span> <span class="direct-chat-timestamp pull-left">${time}</span> </div>
                         <div class="direct-chat-text">${message}</div>
                     </div>`
 				$('#chatMessages').append(some_html);
