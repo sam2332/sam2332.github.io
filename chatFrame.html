@@ -91,12 +91,10 @@
 				user = msg['u']
 				time = new Date(msg['t']*1000);
 				const some_html = `
-				  <div class="message">
-				    <h2>${user}</h2>
-				    <p>${message}</p>
-				    <small>${time}</small
-				  </div>
-				`;
+                    <div class="direct-chat-msg right">
+                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">${user}</span> <span class="direct-chat-timestamp pull-left">${time}</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
+                        <div class="direct-chat-text">${message}</div>
+                    </div>`
 				$('#chatMessages').append(some_html);
 
 			}
