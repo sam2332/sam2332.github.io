@@ -142,7 +142,8 @@
 				contentType: 'application/json',
 				type: 'POST',
 				success: function ( data ) {
-					getMessages()
+					render(data)
+					window.lu = data['lu']
 				},
 				error: function(xhr, ajaxOptions, thrownError){
 					$('#chatMessages').empty()
