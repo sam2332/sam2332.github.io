@@ -426,33 +426,46 @@
             return time
         }
 		function renderChatMessages(messages){
+			var previous_user = '';
+			var nuindex = 0;
+			var p1 = 'left';
+			var p3 = '';
 			for (var i = 0; i <= messages.length - 1; i++) {
-				msg = messages[i]
-				if (i %2 == 1){
-					p1 = 'left'
-					p3 =''
-				}else{
-					p1 = 'right'
-					p3='right'
-				}
-				message = parseMarkdown(msg['m'])
+				msg = messages[i];
+				
+				message = parseMarkdown(msg['m']);
 				user = msg['u']
-				ua = msg['u'].substr(0,2)
-				time = new Date(msg['t']*1000);
-				const some_html = `
-                    <div class="direct-chat-msg ${p3}">
-                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name float-${p1}">${user}</span> <span class="direct-chat-timestamp float-${p1}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
-                        <div class="direct-chat-text">${message}</div>
-                    </div>`
+				if (previous_user != user){
+					ua = msg['u'].substr(0,2);
+					time = new Date(msg['t']*1000);
+					if (nuindex %2 == 1){
+						p1 = 'left';
+						p3 ='';
+					}else{
+						p1 = 'right';
+						p3='right';
+					}
+					const some_html = `
+	                    <div class="direct-chat-msg ${p3}">
+	                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name float-${p1}">${user}</span> <span class="direct-chat-timestamp float-${p1}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
+	                        <div class="direct-chat-text">${message}</div>
+	                    </div>`;
+	                previous_user = user;
+                }else{
+					const some_html = `
+	                    <div class="direct-chat-msg ${p3}">
+	                        <div class="direct-chat-text">${message}</div>
+	                    </div>`;
+                }
 				$('#chatMessages').append(some_html);
 
 			}
 		}
 		function render(data){
-			$('#chatMessages').empty()
-			$('#messageCount').text(data['m'].length)
-			console.log(convertTimestamptoTime(data['lu']))
-			renderChatMessages(data['m'])
+			$('#chatMessages').empty();
+			$('#messageCount').text(data['m'].length);
+			console.log(convertTimestamptoTime(data['lu']));
+			renderChatMessages(data['m']);
 		}
 		
 		function getMessages(){
@@ -462,12 +475,12 @@
 				contentType: 'application/json',
 				crossDomain: true,
 				success: function ( data ) {
-					console.log(data)
-					render(data)
-					window.lu = data['lu']
+					console.log(data);
+					render(data);
+					window.lu = data['lu'];
 				},
 				error: function(xhr, ajaxOptions, thrownError){
-					$('#chatMessages').empty()
+					$('#chatMessages').empty();
 					const some_html = `
 					  <div class="message">
 					    <h2>No Messages Added yet, Be the first!</h2>
@@ -490,11 +503,11 @@
 				contentType: 'application/json',
 				type: 'POST',
 				success: function ( data ) {
-					render(data)
-					window.lu = data['lu']
+					render(data);
+					window.lu = data['lu'];
 				},
 				error: function(xhr, ajaxOptions, thrownError){
-					$('#chatMessages').empty()
+					$('#chatMessages').empty();
 					const some_html = `
 					  <div class="message">
 					    <h2>Error Sending message</h2>
@@ -503,7 +516,7 @@
 					$('#chatMessages').append(some_html);
 				}
 			});
-			$('#chatInput').val('')
+			$('#chatInput').val('');
 			e.preventDefault();
 
 		}
