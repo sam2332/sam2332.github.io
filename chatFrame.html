@@ -420,15 +420,23 @@
 		function renderChatMessages(messages){
 			for (var i = 0; i <= messages.length - 1; i++) {
 				msg = messages[i]
+				if (i %2 == 1){
+					p1 = 'left'
+					p2 = 'right'
+					p3 =''
+				}else{
 
+					p1 = 'right'
+					p2 = 'left'
+					p3='right'
+				}
 				message = parseMarkdown(msg['m'])
 				user = msg['u']
 				ua = msg['u'].substr(0,2)
 				time = new Date(msg['t']*1000);
 				const some_html = `
-                    <div class="direct-chat-msg right">
-						<img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
-                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">${user}</span> <span class="direct-chat-timestamp pull-left">${time}</span> </div>
+                    <div class="direct-chat-msg ${p3}">
+                        <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-${p1}">${user}</span> <span class="direct-chat-timestamp pull-${p2}">${time}</span> </div> <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
                         <div class="direct-chat-text">${message}</div>
                     </div>`
 				$('#chatMessages').append(some_html);
