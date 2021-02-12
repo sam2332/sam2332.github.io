@@ -130,9 +130,9 @@
 			});
 		}
 		function sendMessage(e){
-			data = {};
-    		data['user']=$('#username').val();
-    		data['message']= $('#chatInput').val();
+			data = new FormData();
+    		data.append( 'user', $('#username').val() );
+    		data.append( 'message', $('#chatInput').val() );
 
 			$.ajax({
 				url: 'https://betbot.samrudloff.com/chat/'+chatId,
