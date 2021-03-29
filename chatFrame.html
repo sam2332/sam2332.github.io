@@ -419,7 +419,6 @@
 		
 
 		function convertTimestamptoTime(unixTimestamp) { 
-  
             dateObj = new Date(unixTimestamp); 
             utcString = dateObj.toUTCString(); 
   
@@ -440,7 +439,8 @@
 				if (previous_user != user){
 					nuindex +=1;
 					ua = msg['u'].substr(0,2);
-					time = new Date(msg['t']*1000);
+					var time = new Date(0); // The 0 there is the key, which sets the date to the epoch
+					time.setUTCSeconds(msg['t']);
 					if (nuindex %2 == 1){
 						p1 = 'left';
 						p3 ='';
