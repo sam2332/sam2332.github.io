@@ -442,6 +442,7 @@
 					ua = msg['u'].substr(0,2);
 					var time = new Date(0); // The 0 there is the key, which sets the date to the epoch
 					time.setUTCSeconds(msg['t']);
+					var time_s = time.toDateString() + " " + time.toTimeString();
 					if (nuindex %2 == 1){
 						p1 = 'left';
 						p3 ='';
@@ -453,7 +454,7 @@
 	                    <div class="direct-chat-msg ${p3}">
 	                        <div class="direct-chat-info clearfix">
 	                        	<span class="direct-chat-name float-${p1} font-weight-bold">${user}</span>
-	                         	<span class="direct-chat-timestamp float-${p1}">${time}</span>
+	                         	<span class="direct-chat-timestamp float-${p1}">${time_s}</span>
 	                         </div>
 	                         <img class="direct-chat-img" src="http://placehold.it/50/55C1E7/fff&text=${ua}" alt="message user image">
 	                        <div class="direct-chat-text">${message}</div>
