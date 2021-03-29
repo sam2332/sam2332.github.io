@@ -417,14 +417,6 @@
 		    return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ');
 		};
 		
-
-		function convertTimestamptoTime(unixTimestamp) { 
-            dateObj = new Date(unixTimestamp); 
-            utcString = dateObj.toUTCString(); 
-  
-            time = utcString
-            return time
-        }
 		function renderChatMessages(messages){
 			var previous_user = '';
 			var nuindex = 0;
@@ -445,10 +437,10 @@
 					ua = msg['u'].substr(0,2);
 					if (nuindex %2 == 1){
 						p1 = 'left';
-						p3 ='';
+						p3 = '';
 					}else{
 						p1 = 'right';
-						p3='right';
+						p3 = 'right';
 					}
 					some_html = `
 	                    <div class="direct-chat-msg ${p3}">
@@ -476,7 +468,6 @@
 		function render(data){
 			$('#chatMessages').empty();
 			$('#messageCount').text(data['m'].length +' Messages');
-			console.log(convertTimestamptoTime(data['lu']*1000));
 			renderChatMessages(data['m']);
 			var objDiv = document.getElementById("chatMessages");
 			objDiv.scrollTop = objDiv.scrollHeight+objDiv.clientHeight;
