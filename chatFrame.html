@@ -427,7 +427,7 @@
 				var some_html;
 				msg = messages[i];
 				
-				message = marked(DOMPurify.sanitize( msg['m'] , {USE_PROFILES: {html: true}} ), { renderer });
+				message = marked.parse(DOMPurify.sanitize( msg['m'] , {USE_PROFILES: {html: true}} ), { renderer });
 				user =  DOMPurify.sanitize(msg['u'] , {USE_PROFILES: {html: true}} )
 				var time = new Date(0); // The 0 there is the key, which sets the date to the epoch
 				time.setUTCSeconds(msg['t']);
